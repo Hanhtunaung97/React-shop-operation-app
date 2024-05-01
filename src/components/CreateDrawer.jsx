@@ -1,15 +1,40 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { dataContext } from "../contexts/DataContext";
 
 const CreateDrawer = () => {
-  const {createDrawer, toggleCreateDrawer}= useContext(dataContext);
-  const handleDrawerBtn=() => {
+  const { createDrawer, toggleCreateDrawer,addNewConsole } = useContext(dataContext);
+  const [isLoading, setIsLoading] = useState(false);
+  const handleDrawerBtn = () => {
     toggleCreateDrawer();
-  }
+  };
+  const formRef = useRef();
+  const handleCreateForm = async (event) => {
+    event.preventDefault();
+    // console.log("submit");
+    const formData = new FormData(formRef.current);
+    const createPlayStation = {
+      title: formData.get("title"),
+      short_name: formData.get("short_name"),
+      fee: formData.get("fee"),
+    };
+    setIsLoading(true);
+    const res = await fetch("http://localhost:5173/api/consoles", {
+      method: "POST",
+      headers: new Headers({ "content-type": "application/json" }),
+      body: JSON.stringify(createPlayStation),
+    });
+    const json = await res.json();
+    addNewConsole(json)
+    setIsLoading(false);
+    formData.get("close") && toggleCreateDrawer();
+    formRef.current.reset();
+  };
   return (
     <div
       id="drawer-right-example"
-      className={`fixed shadow-md top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform bg-white w-80 dark:bg-gray-800 ${!createDrawer && 'translate-x-full'}`}
+      className={`fixed shadow top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform duration-150 bg-white w-80 dark:bg-gray-800 ${
+        !createDrawer && "translate-x-full"
+      }`}
       tabIndex={-1}
       aria-labelledby="drawer-right-label"
       aria-hidden="true"
@@ -27,10 +52,10 @@ const CreateDrawer = () => {
         >
           <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
         </svg>
-        Create New Courses
+        Create New Play Station
       </h5>
       <button
-      onClick={handleDrawerBtn}
+        onClick={handleDrawerBtn}
         type="button"
         data-drawer-hide="drawer-right-example"
         aria-controls="drawer-right-example"
@@ -53,20 +78,21 @@ const CreateDrawer = () => {
         </svg>
         <span className="sr-only">Close menu</span>
       </button>
-      <form id="createCourseForm">
+      <form ref={formRef} onSubmit={handleCreateForm} id="createCourseForm">
         <div className="mb-5">
           <label
             htmlFor="courseTitle"
             className="block mb-2 text-sm font-medium text-violet-900 dark:text-white"
           >
-            Course Title
+            Play Station Title
           </label>
           <input
+          disabled={isLoading}
             type="text"
             id="courseTitle"
             name="title"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500 disabled:opacity-75"
-            placeholder="eg. Premium Ui Design"
+            placeholder="eg. Play Station 2"
             required
           />
         </div>
@@ -78,11 +104,12 @@ const CreateDrawer = () => {
             ShortName
           </label>
           <input
+            disabled={isLoading}
             type="text"
             id="shortName"
             name="short_name"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500 disabled:opacity-75"
-            placeholder="eg.BUD"
+            placeholder="eg.PS2"
             required
           />
         </div>
@@ -94,6 +121,7 @@ const CreateDrawer = () => {
             Fee
           </label>
           <input
+            disabled={isLoading}
             type="number"
             id="fee"
             name="fee"
@@ -114,10 +142,11 @@ const CreateDrawer = () => {
               htmlFor="default-checkbox"
               className="ms-2 text-sm  text-violet-900 dark:text-violet-300"
             >
-              AutoClose after save!
+              AutoClose !
             </label>
           </div>
           <button
+            disabled={isLoading}
             type="submit"
             className="group flex items-center gap-2 text-white bg-violet-700 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-violet-600 dark:hover:bg-violet-700 dark:focus:ring-violet-800 disabled:opacity-75 disabled:before:w-4 disabled:before:h-4 disabled:before:rounded-full disabled:before:border-2 disabled:before:border-violet-100 disabled:before:border-l-violet-400 disabled:before:animate-spin"
           >

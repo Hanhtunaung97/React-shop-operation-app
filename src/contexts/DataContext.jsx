@@ -5,6 +5,9 @@ const DataContextProvider = ({ children }) => {
   const [createDrawer, setCreateDrawer] = useState(false);
   const [editDrawer, setEditDrawer] = useState(false);
   const [consoles,setConsole]=useState([]);
+  const addNewConsole=(newConsole) => {
+    setConsole([...consoles,newConsole])
+  }
   const toggleCreateDrawer = () => {
     setCreateDrawer(!createDrawer);
   };
@@ -13,7 +16,7 @@ const DataContextProvider = ({ children }) => {
   };
   return (
     <dataContext.Provider
-      value={{ createDrawer, toggleCreateDrawer, editDrawer, toggleEditDrawer,consoles,setConsole }}
+      value={{ createDrawer, toggleCreateDrawer, editDrawer, toggleEditDrawer,consoles,setConsole,addNewConsole }}
     >
       {children}
     </dataContext.Provider>

@@ -20,7 +20,7 @@ const TableGroup = () => {
           data-drawer-placement="right"
           aria-controls="drawer-right-example"
         >
-          Add Courses
+          Add New Play Station
         </button>
         <div className="relative">
           <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">

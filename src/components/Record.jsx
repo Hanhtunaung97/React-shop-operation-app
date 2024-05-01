@@ -1,19 +1,19 @@
 import React from "react";
 
-const Record = () => {
+const Record = ({console:{id,title,short_name,fee}}) => {
   return (
-    <tr className=" shadow-lg odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+    <tr className=" shadow odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
       <th
         scope="row"
         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white "
       >
-        3
+        {id}
       </th>
       <td className="px-6 py-4 editable-cell record-title ">
-        Premium UI Design
+        {title}
       </td>
-      <td className="px-6 py-4 editable-cell record-short-name">PUD</td>
-      <td className="px-6 py-4 editable-cell record-fee text-end">120000</td>
+      <td className="px-6 py-4 editable-cell record-short-name">{short_name}</td>
+      <td className="px-6 py-4 editable-cell record-fee text-end">{fee}</td>
       <td className="px-6 py-4 text-end whitespace-nowrap flex justify-end gap-2">
         <button
           type="button"

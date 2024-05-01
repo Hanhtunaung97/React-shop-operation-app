@@ -4,6 +4,7 @@ export const dataContext = createContext();
 const DataContextProvider = ({ children }) => {
   const [createDrawer, setCreateDrawer] = useState(false);
   const [editDrawer, setEditDrawer] = useState(false);
+  const [consoles,setConsole]=useState([]);
   const toggleCreateDrawer = () => {
     setCreateDrawer(!createDrawer);
   };
@@ -12,7 +13,7 @@ const DataContextProvider = ({ children }) => {
   };
   return (
     <dataContext.Provider
-      value={{ createDrawer, toggleCreateDrawer, editDrawer, toggleEditDrawer }}
+      value={{ createDrawer, toggleCreateDrawer, editDrawer, toggleEditDrawer,consoles,setConsole }}
     >
       {children}
     </dataContext.Provider>

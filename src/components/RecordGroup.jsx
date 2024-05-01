@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import Record from "./Record";
 import { dataContext } from "../contexts/DataContext";
 import LoaderRow from "./LoaderRow";
+import EmptyRecord from "./EmptyRecord";
 
 const RecordGroup = () => {
   const { consoles, setConsole } = useContext(dataContext);
@@ -19,9 +20,14 @@ const RecordGroup = () => {
   return (
     <>
       {!ready && loaderRowArray.map((el, index) => <LoaderRow key={index} />)}
-      {consoles.map((console) => (
-        <Record key={console.id} console={console} />
-      ))}
+      {ready &&
+        (consoles.length ? (
+          consoles.map((console) => (
+            <Record key={console.id} console={console} />
+          ))
+        ) : (
+          <EmptyRecord />
+        ))}
     </>
   );
 };

@@ -2,7 +2,8 @@ import React, { useContext, useRef, useState } from "react";
 import { dataContext } from "../contexts/DataContext";
 
 const CreateDrawer = () => {
-  const { createDrawer, toggleCreateDrawer,addNewConsole } = useContext(dataContext);
+  const { createDrawer, toggleCreateDrawer, addNewConsole } =
+    useContext(dataContext);
   const [isLoading, setIsLoading] = useState(false);
   const handleDrawerBtn = () => {
     toggleCreateDrawer();
@@ -24,7 +25,7 @@ const CreateDrawer = () => {
       body: JSON.stringify(createPlayStation),
     });
     const json = await res.json();
-    addNewConsole(json)
+    addNewConsole(json);
     setIsLoading(false);
     formData.get("close") && toggleCreateDrawer();
     formRef.current.reset();
@@ -87,11 +88,11 @@ const CreateDrawer = () => {
             Play Station Title
           </label>
           <input
-          disabled={isLoading}
+            disabled={isLoading}
             type="text"
             id="courseTitle"
             name="title"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500 disabled:opacity-75"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500 disabled:opacity-50"
             placeholder="eg. Play Station 2"
             required
           />
@@ -108,7 +109,7 @@ const CreateDrawer = () => {
             type="text"
             id="shortName"
             name="short_name"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500 disabled:opacity-75"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500 disabled:opacity-50"
             placeholder="eg.PS2"
             required
           />
@@ -125,7 +126,7 @@ const CreateDrawer = () => {
             type="number"
             id="fee"
             name="fee"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500 disabled:opacity-75"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-violet-500 focus:border-violet-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-violet-500 dark:focus:border-violet-500 disabled:opacity-50"
             required
           />
         </div>
@@ -148,7 +149,7 @@ const CreateDrawer = () => {
           <button
             disabled={isLoading}
             type="submit"
-            className="group flex items-center gap-2 text-white bg-violet-700 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-violet-600 dark:hover:bg-violet-700 dark:focus:ring-violet-800 disabled:opacity-75 disabled:before:w-4 disabled:before:h-4 disabled:before:rounded-full disabled:before:border-2 disabled:before:border-violet-100 disabled:before:border-l-violet-400 disabled:before:animate-spin"
+            className="group flex items-center gap-2 text-white bg-violet-700 hover:bg-violet-800 focus:ring-4 focus:outline-none focus:ring-violet-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-violet-600 dark:hover:bg-violet-700 dark:focus:ring-violet-800 disabled:opacity-50 disabled:before:w-4 disabled:before:h-4 disabled:before:rounded-full disabled:before:border-2 disabled:before:border-violet-100 disabled:before:border-l-violet-400 disabled:before:animate-spin"
           >
             <span className="hidden group-disabled:inline">loading..</span>
             <span className="inline group-disabled:hidden">Submit</span>

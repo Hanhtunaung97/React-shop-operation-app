@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import { dataContext } from "../contexts/DataContext";
 
 const EditDrawer = () => {
+    const {editDrawer,toggleEditDrawer}=useContext(dataContext);
+    const handleEditBtn=() => {
+        toggleEditDrawer();
+    }
   return (
     <div
       id="recordEditDrawer"
-      className="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform bg-white w-80 dark:bg-violet-800 translate-x-full"
+      className={`fixed shadow top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform duration-150 bg-white w-80 dark:bg-violet-800 ${!editDrawer && 'translate-x-full'}`}
       tabIndex={-1}
       aria-labelledby="drawer-right-label"
       aria-modal="true"
@@ -26,6 +31,7 @@ const EditDrawer = () => {
         Edit New Courses
       </h5>
       <button
+      onClick={handleEditBtn}
         type="button"
         data-drawer-hide="recordEditDrawer"
         aria-controls="recordEditDrawer"

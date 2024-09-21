@@ -17,7 +17,7 @@
 - Tailwind CSS
 - vite-plugin-simple-json-server
 
-![e-commerce webpage](https://github.com/Hanhtunaung97/React-shop-operation-app/blob/48e7acf1fb8079c13aa54da4e378d1081855cf06/public/img/Cover%20photo.PNG)
+![react_shop_operation webpage](https://github.com/Hanhtunaung97/React-shop-operation-app/blob/48e7acf1fb8079c13aa54da4e378d1081855cf06/public/img/Cover%20photo.PNG)
 
 ## <a>🤸 Quick Start</a>
 

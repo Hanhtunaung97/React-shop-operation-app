@@ -15,6 +15,7 @@
 - SweetAlert2
 - Vite
 - Tailwind CSS
+- vite-plugin-simple-json-server
 
 ![e-commerce webpage](https://github.com/Hanhtunaung97/React-shop-operation-app/blob/48e7acf1fb8079c13aa54da4e378d1081855cf06/public/img/Cover%20photo.PNG)
 
@@ -49,6 +50,12 @@ npm install
 
 ```bash
 npm run dev
+```
+
+**Installing the Json Server**
+
+```bash
+npm add -D vite-plugin-simple-json-server
 ```
 
 Open [http://localhost:5173](http://localhost:5173) in your browser to view the project.

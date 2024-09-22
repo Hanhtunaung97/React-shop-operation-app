@@ -8,7 +8,7 @@
 </div>
 <br/>
 
-## <a name="tech-stack">⚙️ Tech Stack</a>
+## <a>⚙️ Tech Stack</a>
 
 - React.js
 - flow bite
@@ -59,4 +59,3 @@ npm add -D vite-plugin-simple-json-server
 ```
 
 Open [http://localhost:5173](http://localhost:5173) in your browser to view the project.
-
